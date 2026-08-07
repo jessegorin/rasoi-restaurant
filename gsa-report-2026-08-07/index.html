@@ -1,0 +1,1218 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<meta name="robots" content="noindex">
+<title>Rasoi Restaurant &mdash; Google Search Ads Performance Review</title>
+<style>
+  :root {
+    --navy:            #001f52;
+    --navy-deep:       #000a1f;
+    --heading-navy:    #0a2540;
+    --brand-blue:      #1B51A4;
+    --accent-blue:     #3B82F6;
+    --accent-cyan:     #06B6D4;
+
+    --ink:             #0a1628;
+    --ink-body:        #3b4563;
+    --ink-muted:       #6b7a99;
+    --ink-subtle:      #8b95ad;
+
+    --surface:         #ffffff;
+    --surface-raised:  #f8f9fc;
+    --surface-cool:    #f0f3fa;
+
+    --border:          #e2e8f0;
+    --border-subtle:   #eef2f7;
+
+    --series:          #1B51A4;
+    --series-mid:      #7fa3d9;
+    --series-soft:     #dce5f2;
+    --grid:            #e8edf6;
+
+    --good:            #1d7a44;
+    --good-bg:         #e7f4ec;
+    --watch:           #9a6207;
+    --watch-bg:        #fdf4e3;
+    --stop:            #a5312a;
+    --stop-bg:         #fbeceb;
+
+    --font-head: "Helvetica Neue", Helvetica, Arial, system-ui, sans-serif;
+    --font-body: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --font-data: ui-monospace, SFMono-Regular, "SF Mono", Menlo, Consolas, monospace;
+  }
+
+  * { box-sizing: border-box; }
+
+  body {
+    margin: 0;
+    background: var(--surface);
+    color: var(--ink-body);
+    font-family: var(--font-body);
+    font-size: 16px;
+    line-height: 1.65;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  h1, h2, h3, h4 {
+    font-family: var(--font-head);
+    color: var(--heading-navy);
+    text-wrap: balance;
+    margin: 0;
+  }
+
+  /* ---------- masthead ---------- */
+
+  .masthead {
+    background: linear-gradient(165deg, #020817 0%, #001131 35%, #001f52 68%, #0c2d6b 100%);
+    padding: 56px 32px 64px;
+    position: relative;
+    overflow: hidden;
+  }
+
+  .masthead::after {
+    content: "";
+    position: absolute;
+    inset: 0;
+    opacity: 0.04;
+    background-image:
+      linear-gradient(rgba(255,255,255,0.1) 1px, transparent 1px),
+      linear-gradient(90deg, rgba(255,255,255,0.1) 1px, transparent 1px);
+    background-size: 60px 60px;
+    pointer-events: none;
+  }
+
+  .masthead-orb {
+    position: absolute;
+    width: 620px;
+    height: 620px;
+    right: -180px;
+    top: -280px;
+    border-radius: 50%;
+    background: radial-gradient(circle, rgba(59,130,246,0.16) 0%, transparent 70%);
+    filter: blur(60px);
+    pointer-events: none;
+  }
+
+  .masthead-inner {
+    max-width: 1080px;
+    margin: 0 auto;
+    position: relative;
+    z-index: 1;
+  }
+
+  .eyebrow {
+    font-size: 11px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: #38bdf8;
+    margin: 0 0 14px;
+  }
+
+  .masthead h1 {
+    color: #fff;
+    font-size: 3rem;
+    font-weight: 900;
+    line-height: 1.06;
+    letter-spacing: -0.022em;
+    margin-bottom: 18px;
+  }
+
+  .masthead .standfirst {
+    color: #b4c6e0;
+    font-size: 1.08rem;
+    max-width: 640px;
+    margin: 0 0 30px;
+  }
+
+  .meta-strip {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 10px 28px;
+    padding-top: 26px;
+    border-top: 1px solid rgba(255,255,255,0.11);
+  }
+
+  .meta-item .k {
+    display: block;
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.3px;
+    color: rgba(255,255,255,0.42);
+    margin-bottom: 3px;
+  }
+
+  .meta-item .v {
+    font-size: 14px;
+    color: #dce6f5;
+    font-variant-numeric: tabular-nums;
+  }
+
+  /* ---------- shell ---------- */
+
+  main {
+    max-width: 1080px;
+    margin: 0 auto;
+    padding: 0 32px 96px;
+  }
+
+  section { padding-top: 68px; }
+  section.tight { padding-top: 52px; }
+
+  .sec-head { margin-bottom: 30px; }
+  .sec-head .eyebrow { color: var(--accent-blue); }
+
+  .sec-head h2 {
+    font-size: 2rem;
+    font-weight: 700;
+    line-height: 1.18;
+    margin-bottom: 10px;
+  }
+
+  .sec-head p {
+    margin: 0;
+    color: var(--ink-muted);
+    max-width: 68ch;
+  }
+
+  h3 {
+    font-size: 1.16rem;
+    font-weight: 700;
+    line-height: 1.32;
+    margin-bottom: 8px;
+  }
+
+  p { margin: 0 0 1em; }
+  p:last-child { margin-bottom: 0; }
+
+  /* ---------- kpi band ---------- */
+
+  .kpi-band {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 1px;
+    background: var(--border);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    overflow: hidden;
+    margin-top: -34px;
+    position: relative;
+    z-index: 2;
+    box-shadow: 0 12px 40px rgba(0,0,0,0.10);
+  }
+
+  .kpi { background: var(--surface); padding: 24px 22px 22px; }
+
+  .kpi .label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.2px;
+    color: var(--ink-subtle);
+    margin-bottom: 10px;
+  }
+
+  .kpi .value {
+    font-family: var(--font-head);
+    font-size: 2.1rem;
+    font-weight: 900;
+    letter-spacing: -0.02em;
+    color: var(--navy);
+    line-height: 1;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .kpi .value .unit { font-size: 1.05rem; font-weight: 700; letter-spacing: 0; }
+
+  .kpi .sub {
+    font-size: 12.5px;
+    color: var(--ink-muted);
+    margin-top: 9px;
+    line-height: 1.45;
+  }
+
+  /* ---------- prose + callouts ---------- */
+
+  .lede { font-size: 1.1rem; color: var(--ink-body); max-width: 68ch; }
+
+  .note {
+    border-left: 3px solid var(--brand-blue);
+    padding: 4px 0 4px 18px;
+    color: var(--ink-body);
+    margin: 22px 0;
+    max-width: 68ch;
+  }
+
+  .note strong { color: var(--heading-navy); }
+
+  .note.warn { border-left-color: #d99b1c; }
+  .note.stop { border-left-color: var(--stop); }
+
+  /* ---------- win / call-out cards ---------- */
+
+  .wins { display: grid; grid-template-columns: repeat(3, 1fr); gap: 18px; }
+
+  .win {
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 0 0 22px;
+    overflow: hidden;
+  }
+
+  .win .bar { height: 3px; background: linear-gradient(135deg, #1B51A4, #3B82F6, #06B6D4); }
+  .win.flag .bar { background: linear-gradient(135deg, #a5312a, #d99b1c); }
+  .win .body { padding: 20px 22px 0; }
+
+  .win .stat {
+    font-family: var(--font-head);
+    font-size: 1.85rem;
+    font-weight: 900;
+    color: var(--navy);
+    letter-spacing: -0.02em;
+    line-height: 1;
+    margin-bottom: 12px;
+    font-variant-numeric: tabular-nums;
+  }
+
+  .win h3 { margin-bottom: 7px; }
+  .win p { font-size: 14px; color: var(--ink-muted); margin: 0; }
+
+  /* ---------- figures ---------- */
+
+  figure {
+    margin: 0;
+    background: var(--surface);
+    border: 1px solid var(--border);
+    border-radius: 16px;
+    padding: 22px 24px 18px;
+  }
+
+  figcaption { margin-bottom: 4px; }
+
+  figcaption .title {
+    display: block;
+    font-family: var(--font-head);
+    font-size: 1.02rem;
+    font-weight: 700;
+    color: var(--heading-navy);
+    line-height: 1.35;
+  }
+
+  figcaption .desc {
+    display: block;
+    font-size: 13px;
+    color: var(--ink-muted);
+    margin-top: 4px;
+    max-width: 74ch;
+  }
+
+  .chart-host { margin-top: 16px; overflow-x: auto; }
+  .chart-host svg { display: block; width: 100%; min-width: 520px; height: auto; overflow: visible; }
+
+  .axis-label {
+    font-size: 10px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.1px;
+    fill: var(--ink-subtle);
+    font-family: var(--font-body);
+  }
+
+  .tick {
+    font-size: 11px;
+    fill: var(--ink-subtle);
+    font-family: var(--font-body);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .rowlab {
+    font-size: 12.5px;
+    font-weight: 700;
+    fill: var(--heading-navy);
+    font-family: var(--font-body);
+  }
+
+  .dlabel {
+    font-size: 11.5px;
+    font-weight: 700;
+    fill: var(--ink);
+    font-family: var(--font-body);
+    font-variant-numeric: tabular-nums;
+  }
+
+  .dlabel.muted { fill: var(--ink-muted); font-weight: 600; }
+
+  .baseline { stroke: var(--border); stroke-width: 1; }
+
+  .legend { display: flex; flex-wrap: wrap; gap: 8px 20px; margin-top: 14px; }
+
+  .legend span {
+    display: inline-flex;
+    align-items: center;
+    gap: 7px;
+    font-size: 12.5px;
+    color: var(--ink-muted);
+  }
+
+  .legend i { width: 12px; height: 12px; border-radius: 3px; display: inline-block; }
+
+  /* ---------- tables ---------- */
+
+  .table-wrap { overflow-x: auto; border: 1px solid var(--border); border-radius: 14px; }
+
+  table { width: 100%; border-collapse: collapse; font-size: 14px; min-width: 560px; }
+
+  th, td { text-align: left; padding: 11px 16px; border-bottom: 1px solid var(--border-subtle); vertical-align: top; }
+
+  thead th {
+    background: var(--surface-raised);
+    font-size: 10.5px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1px;
+    color: var(--ink-muted);
+    white-space: nowrap;
+  }
+
+  tbody tr:last-child td { border-bottom: none; }
+  tbody tr.total { background: var(--surface-raised); }
+  tbody tr.total th, tbody tr.total td { font-weight: 700; color: var(--heading-navy); }
+
+  td.num, th.num { text-align: right; font-variant-numeric: tabular-nums; white-space: nowrap; }
+
+  tbody th { font-weight: 600; color: var(--heading-navy); font-size: 14px; }
+
+  .pill {
+    display: inline-block;
+    font-size: 11px;
+    font-weight: 700;
+    padding: 2px 8px;
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+
+  .pill.add  { color: var(--good); background: var(--good-bg); }
+  .pill.hold { color: var(--watch); background: var(--watch-bg); }
+  .pill.drop { color: var(--stop); background: var(--stop-bg); }
+
+  /* ---------- work log ---------- */
+
+  .worklog { border: 1px solid var(--border); border-radius: 16px; overflow: hidden; }
+
+  .worklog-row {
+    display: grid;
+    grid-template-columns: 210px 1fr 130px;
+    gap: 24px;
+    padding: 18px 22px;
+    border-bottom: 1px solid var(--border-subtle);
+  }
+
+  .worklog-row:last-child { border-bottom: none; }
+  .worklog-row:nth-child(odd) { background: var(--surface-raised); }
+
+  .worklog-row .what {
+    font-family: var(--font-head);
+    font-weight: 700;
+    color: var(--heading-navy);
+    font-size: 14.5px;
+  }
+
+  .worklog-row .detail { font-size: 14px; color: var(--ink-muted); }
+
+  .worklog-row .who {
+    font-size: 12px;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 0.8px;
+    color: var(--ink-subtle);
+  }
+
+  /* ---------- footer ---------- */
+
+  footer {
+    border-top: 1px solid var(--border);
+    margin-top: 76px;
+    padding-top: 26px;
+    font-size: 12.5px;
+    color: var(--ink-subtle);
+    max-width: 80ch;
+  }
+
+  footer p { margin-bottom: 0.6em; }
+  footer b { color: var(--ink-muted); }
+
+  a { color: var(--brand-blue); }
+  a:focus-visible { outline: 2px solid var(--accent-blue); outline-offset: 2px; border-radius: 3px; }
+
+  @media (max-width: 900px) {
+    .kpi-band { grid-template-columns: repeat(2, 1fr); }
+    .wins { grid-template-columns: 1fr; }
+    .masthead h1 { font-size: 2.3rem; }
+    .sec-head h2 { font-size: 1.65rem; }
+    main, .masthead { padding-left: 22px; padding-right: 22px; }
+    .worklog-row { grid-template-columns: 1fr; gap: 6px; }
+  }
+
+  @media (max-width: 560px) {
+    .kpi-band { grid-template-columns: 1fr; }
+    .masthead h1 { font-size: 1.95rem; }
+  }
+</style>
+</head>
+<body>
+<header class="masthead">
+  <div class="masthead-orb"></div>
+  <div class="masthead-inner">
+    <p class="eyebrow">Google Search Ads &middot; Performance Review &amp; Website Keyword Recommendations</p>
+    <h1>Four words are earning<br>almost all of your ad revenue.</h1>
+    <p class="standfirst">
+      Across 126 keywords and $426.99 of spend last month, just four search themes
+      produced every single online order. This review sets out which of them belong on
+      your website, which do not, and the one location that is spending money without
+      returning any.
+    </p>
+    <div class="meta-strip">
+      <div class="meta-item">
+        <span class="k">Locations</span>
+        <span class="v">Jersey City &middot; Iselin &middot; South Brunswick</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">Campaigns live since</span>
+        <span class="v">February 11, 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">Reporting period</span>
+        <span class="v">Jul 8 &ndash; Aug 6, 2026</span>
+      </div>
+      <div class="meta-item">
+        <span class="k">Prepared</span>
+        <span class="v">Aug 7, 2026</span>
+      </div>
+    </div>
+  </div>
+</header>
+
+<main>
+
+  <div class="kpi-band">
+    <div class="kpi">
+      <div class="label">People who saw you</div>
+      <div class="value">16,479</div>
+      <div class="sub">ad impressions across three locations</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Visits to your ordering pages</div>
+      <div class="value">1,014</div>
+      <div class="sub">at an average of 42&cent; a click</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Online orders from ads</div>
+      <div class="value">14</div>
+      <div class="sub">worth $723.50 &middot; plus 66 phone calls</div>
+    </div>
+    <div class="kpi">
+      <div class="label">Return on ad spend</div>
+      <div class="value">2.45<span class="unit">&times;</span></div>
+      <div class="sub">Rasoi&nbsp;1 and Rasoi&nbsp;2 only &middot; 1.69&times; with Rasoi&nbsp;3 included</div>
+    </div>
+  </div>
+
+  <section class="tight">
+    <p class="lede">
+      Total ad spend for the 30 days was <strong>$426.99</strong> &mdash; about $14.23 a day
+      across three campaigns. That bought 16,479 impressions, 1,014 visits to your online
+      ordering pages, 14 tracked online orders worth $723.50, and 66 phone calls.
+      <strong>Jersey City and Iselin together returned $2.45 for every dollar spent</strong>,
+      comfortably ahead of the 2&times; benchmark we set on the July&nbsp;29 call.
+    </p>
+    <div class="note stop">
+      <strong>The number that needs your attention first:</strong> the Rasoi&nbsp;3
+      (Georges Rd, South Brunswick) campaign is still running. It was due to pause effective
+      August&nbsp;1 following your July&nbsp;29 request, and that change was not applied.
+      It has spent <strong>$131.30</strong> in the last 30 days &mdash; 31% of your total ad
+      budget &mdash; and produced no online orders and one phone call. We are pausing it
+      today.
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Your question, answered</p>
+      <h2>Which terms belong on the website &mdash; and why the page they go on matters</h2>
+      <p>
+        You asked for a cross-reference of your Google Ads keywords against the website.
+        Below is that list, ranked by what each term actually earned last month rather
+        than by how much traffic it brought. One structural point first, because it
+        changes where the edits need to land.
+      </p>
+    </div>
+
+    <div class="wins">
+      <div class="win">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="stat">Two pages</div>
+          <h3>Your ads don't land on your homepage</h3>
+          <p>
+            Every ad points at your online ordering page &mdash;
+            rasoi123.com/store/&hellip; &mdash; not the marketing site. Words added to the
+            homepage help your search ranking. Words added to the ordering page are what
+            Google reads when it decides how often to show your ad and what to charge you.
+          </p>
+        </div>
+      </div>
+      <div class="win flag">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="stat">1&ndash;3 of 10</div>
+          <h3>Your biggest keywords score badly on relevance</h3>
+          <p>
+            Google rates "indian buffet" 1 out of 10 and "butter chicken" 1&ndash;3 out of
+            10 for quality on your account. The main reason is that the page the click
+            lands on doesn't use those words. That is a wording problem, not a budget
+            problem.
+          </p>
+        </div>
+      </div>
+      <div class="win">
+        <div class="bar"></div>
+        <div class="body">
+          <div class="stat">52&ndash;60%</div>
+          <h3>Relevance, not budget, is capping your reach</h3>
+          <p>
+            At Jersey City and Iselin you are losing 52&ndash;60% of available searches to
+            ad rank and only 16&ndash;19% to budget. Roughly three times as much lost
+            visibility comes from relevance as from money.
+          </p>
+        </div>
+      </div>
+    </div>
+
+    <div class="note">
+      <strong>Practically, this means each recommendation below has two homes.</strong>
+      The marketing site edit is what shows up in the monthly SEO report you track. The
+      ordering-page edit is what lowers your cost per click. Doing only the first will
+      improve your rankings but leave the ad costs where they are.
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Where the money comes from</p>
+      <h2>Four themes, all of the revenue</h2>
+      <p>
+        You are running 126 keywords. Four of them produced online orders last month;
+        the other 122 produced none. This is the whole revenue picture, measured on
+        completed online orders only.
+      </p>
+    </div>
+
+    <figure>
+      <figcaption>
+        <span class="title">Spend against online-order revenue, by search theme</span>
+        <span class="desc">
+          Last 30 days. Revenue counts completed orders through your Chowly online
+          ordering, not phone calls or directions requests. Bars share one scale.
+        </span>
+      </figcaption>
+      <div class="chart-host">
+        <svg viewBox="0 0 900 306" role="img" aria-label="Grouped bar chart comparing spend and online-order revenue for four search themes. Indian food catering: $83.93 spend, $342.75 revenue. Butter chicken: $144.52 spend, $136.00 revenue. Indian buffet: $102.95 spend, $186.05 revenue. Indian food delivery: $5.37 spend, $58.70 revenue.">
+          <line class="baseline" x1="200" y1="34" x2="200" y2="290"></line>
+
+          <!-- indian food catering -->
+          <text class="rowlab" x="192" y="52" text-anchor="end">Indian food catering</text>
+          <text class="tick"   x="192" y="68" text-anchor="end">4.08&times; return</text>
+          <rect x="200" y="40"  width="157" height="18" fill="var(--series-soft)"></rect>
+          <rect x="200" y="62"  width="640" height="18" fill="var(--series)"></rect>
+          <text class="dlabel muted" x="365" y="54">$83.93 spent</text>
+          <text class="dlabel"       x="848" y="76">$342.75</text>
+
+          <!-- butter chicken -->
+          <text class="rowlab" x="192" y="114" text-anchor="end">Butter chicken</text>
+          <text class="tick"   x="192" y="130" text-anchor="end">0.94&times; return</text>
+          <rect x="200" y="102" width="270" height="18" fill="var(--series-soft)"></rect>
+          <rect x="200" y="124" width="254" height="18" fill="var(--series)"></rect>
+          <text class="dlabel muted" x="478" y="116">$144.52 spent</text>
+          <text class="dlabel"       x="462" y="138">$136.00</text>
+
+          <!-- indian buffet -->
+          <text class="rowlab" x="192" y="176" text-anchor="end">Indian buffet</text>
+          <text class="tick"   x="192" y="192" text-anchor="end">1.81&times; return</text>
+          <rect x="200" y="164" width="192" height="18" fill="var(--series-soft)"></rect>
+          <rect x="200" y="186" width="347" height="18" fill="var(--series)"></rect>
+          <text class="dlabel muted" x="400" y="178">$102.95 spent</text>
+          <text class="dlabel"       x="555" y="200">$186.05</text>
+
+          <!-- indian food delivery -->
+          <text class="rowlab" x="192" y="238" text-anchor="end">Indian food delivery</text>
+          <text class="tick"   x="192" y="254" text-anchor="end">10.9&times; return</text>
+          <rect x="200" y="226" width="10"  height="18" fill="var(--series-soft)"></rect>
+          <rect x="200" y="248" width="110" height="18" fill="var(--series)"></rect>
+          <text class="dlabel muted" x="218" y="240">$5.37 spent</text>
+          <text class="dlabel"       x="318" y="262">$58.70</text>
+
+          <text class="axis-label" x="200" y="288">Wider bar = more dollars</text>
+        </svg>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--series-soft)"></i> Ad spend</span>
+        <span><i style="background:var(--series)"></i> Online-order revenue</span>
+      </div>
+    </figure>
+
+    <div class="note warn">
+      <strong>This is the part that changes the plan we discussed on July&nbsp;29.</strong>
+      "Butter chicken" is genuinely your biggest keyword &mdash; 277 clicks and $144.52,
+      a third of your entire ad budget. But it is also the <em>weakest earner</em> of the
+      big three: it brought back $136.00, which is roughly break-even. "Indian food
+      catering" spent little more than half as much and returned $342.75 &mdash;
+      47% of all your ad revenue, at four dollars back for every one in.
+      Both belong on the site; catering deserves the better placement.
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Search theme</th>
+            <th scope="col" class="num">Clicks</th>
+            <th scope="col" class="num">Spend</th>
+            <th scope="col" class="num">Online orders</th>
+            <th scope="col" class="num">Revenue</th>
+            <th scope="col" class="num">Avg. order</th>
+            <th scope="col" class="num">Return</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Indian food catering</th>
+            <td class="num">186</td><td class="num">$83.93</td><td class="num">5</td>
+            <td class="num">$342.75</td><td class="num">$68.55</td><td class="num">4.08&times;</td>
+          </tr>
+          <tr>
+            <th scope="row">Indian buffet</th>
+            <td class="num">265</td><td class="num">$102.95</td><td class="num">4</td>
+            <td class="num">$186.05</td><td class="num">$46.51</td><td class="num">1.81&times;</td>
+          </tr>
+          <tr>
+            <th scope="row">Butter chicken</th>
+            <td class="num">277</td><td class="num">$144.52</td><td class="num">4</td>
+            <td class="num">$136.00</td><td class="num">$34.00</td><td class="num">0.94&times;</td>
+          </tr>
+          <tr>
+            <th scope="row">Indian food delivery</th>
+            <td class="num">17</td><td class="num">$5.37</td><td class="num">1</td>
+            <td class="num">$58.70</td><td class="num">$58.70</td><td class="num">10.9&times;</td>
+          </tr>
+          <tr>
+            <th scope="row">All other 122 keywords</th>
+            <td class="num">269</td><td class="num">$90.22</td><td class="num">0</td>
+            <td class="num">$0.00</td><td class="num">&mdash;</td><td class="num">0.00&times;</td>
+          </tr>
+          <tr class="total">
+            <th scope="row">Total</th>
+            <td class="num">1,014</td><td class="num">$426.99</td><td class="num">14</td>
+            <td class="num">$723.50</td><td class="num">$51.68</td><td class="num">1.69&times;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Recommended additions</p>
+      <h2>Five terms to add, in priority order</h2>
+      <p>
+        Each row shows what the term earned last month, what your site says today, and
+        the specific change we recommend. Ranked by revenue, not by traffic.
+      </p>
+    </div>
+
+    <div class="table-wrap">
+      <table style="min-width:820px">
+        <thead>
+          <tr>
+            <th scope="col">#</th>
+            <th scope="col">Term to add</th>
+            <th scope="col" class="num">Earned last month</th>
+            <th scope="col">What the site says today</th>
+            <th scope="col">Recommended change</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">1</th>
+            <td>
+              <strong>Indian Food Catering</strong><br>
+              <span class="pill add">Highest priority</span>
+            </td>
+            <td class="num">$342.75<br><span style="color:var(--ink-muted);font-weight:400">5 orders &middot; 4.08&times;</span></td>
+            <td>"Catering &amp; Banquet Hall" appears as a label, but there is no dedicated
+                catering page and no use of the phrase people actually search.</td>
+            <td>A real catering page per location, headed
+                <em>"Indian Food Catering in Jersey City"</em> / <em>"&hellip; in Edison &amp; Iselin"</em>,
+                with party sizes, lead time and a request form. Your highest-value
+                orders average $68.55 &mdash; a third more than everything else.</td>
+          </tr>
+          <tr>
+            <th scope="row">2</th>
+            <td>
+              <strong>Butter Chicken</strong><br>
+              <span class="pill add">Add to both pages</span>
+            </td>
+            <td class="num">$136.00<br><span style="color:var(--ink-muted);font-weight:400">4 orders &middot; 277 clicks</span></td>
+            <td>Appears only as a link inside the FAQ. Your menu lists the dish as
+                <em>Chicken Makhani</em> &mdash; the correct name, but not the one 277 people
+                searched for.</td>
+            <td>Rename the menu item to <em>"Butter Chicken (Chicken Makhani)"</em> on the
+                ordering pages, and feature it by name in the site's dish copy. This is the
+                single edit most likely to bring the cost of your most expensive keyword down.</td>
+          </tr>
+          <tr>
+            <th scope="row">3</th>
+            <td>
+              <strong>Indian Lunch Buffet</strong><br>
+              <span class="pill add">Reword existing</span>
+            </td>
+            <td class="num">$186.05<br><span style="color:var(--ink-muted);font-weight:400">4 orders &middot; 265 clicks</span></td>
+            <td>"Daily Buffet 11am &ndash; 3pm" is on the page. The words "lunch buffet"
+                never appear together, which is how people search for it.</td>
+            <td>Change the heading to <em>"Indian Lunch Buffet &mdash; Daily 11am&ndash;3pm"</em>
+                and add the price. Small edit, and "indian buffet" is already your
+                second-biggest earner at 1.81&times;.</td>
+          </tr>
+          <tr>
+            <th scope="row">4</th>
+            <td>
+              <strong>Edison</strong> and <strong>Iselin</strong><br>
+              <span class="pill add">Fix the location line</span>
+            </td>
+            <td class="num">$37.24<br><span style="color:var(--ink-muted);font-weight:400">44 clicks on "rasoi edison" alone</span></td>
+            <td>Your main line reads "The Best Indian Food In Jersey City, Woodbridge
+                Township and Monmouth Junction." Edison is only mentioned further down as a
+                service area.</td>
+            <td>Lead with the town names people type: <em>"&hellip; in Jersey City, Edison &amp;
+                Iselin, and Monmouth Junction."</em> Nobody searches "Woodbridge Township" &mdash;
+                five separate paid search terms last month used the word Edison.</td>
+          </tr>
+          <tr>
+            <th scope="row">5</th>
+            <td>
+              <strong>Indian Food Delivery</strong><br>
+              <span class="pill hold">Small but efficient</span>
+            </td>
+            <td class="num">$58.70<br><span style="color:var(--ink-muted);font-weight:400">1 order &middot; 10.9&times;</span></td>
+            <td>"Delivery" is listed in a services list only, with no heading and no town
+                attached to it.</td>
+            <td>Add <em>"Indian Food Delivery in Jersey City"</em> as its own heading. Lowest
+                volume of the five, but the best return in the account &mdash; worth
+                a proper mention before we spend more against it.</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Recommended removals</p>
+      <h2>Terms not worth the page space &mdash; and terms to stop paying for</h2>
+      <p>
+        These fall into two groups. The first are dishes and phrases that draw clicks but
+        no orders; adding them to the site would cost you attention without returning
+        anything. The second are searches you should stop appearing for altogether.
+      </p>
+    </div>
+
+    <div class="table-wrap">
+      <table style="min-width:760px">
+        <thead>
+          <tr>
+            <th scope="col">Term</th>
+            <th scope="col" class="num">Clicks</th>
+            <th scope="col" class="num">Spend</th>
+            <th scope="col" class="num">Orders</th>
+            <th scope="col">Why not</th>
+            <th scope="col">Action</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Tikka masala</th>
+            <td class="num">29</td><td class="num">$26.75</td><td class="num">0</td>
+            <td>Your most expensive keyword with zero orders, and Chicken Tikka Masala is
+                already on the menu. Thirty days, 29 clicks, nothing ordered.</td>
+            <td><span class="pill drop">Pause keyword</span></td>
+          </tr>
+          <tr>
+            <th scope="row">"Takeout"</th>
+            <td class="num">4</td><td class="num">$7.37</td><td class="num">0</td>
+            <td>Far too broad &mdash; it matches takeout searches for any cuisine in your
+                area, including pizza and Chinese.</td>
+            <td><span class="pill drop">Pause keyword</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Naan bread</th>
+            <td class="num">14</td><td class="num">$5.70</td><td class="num">0</td>
+            <td>Side-dish intent. Garlic Naan is already on the menu; nobody builds an
+                order around it.</td>
+            <td><span class="pill hold">Leave as is</span></td>
+          </tr>
+          <tr>
+            <th scope="row">South Indian food, dosa</th>
+            <td class="num">15</td><td class="num">$1.81</td><td class="num">0</td>
+            <td>Your site already mentions South Indian specialities, and these searches
+                still don't order. No case for new copy.</td>
+            <td><span class="pill hold">Leave as is</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Competitor restaurant names</th>
+            <td class="num">13</td><td class="num">$26.26</td><td class="num">0</td>
+            <td>Khan Baba, Bikanervala, A2B, Amma's Kitchen, Kesar, Godavari, Mithaas,
+                Paradise Biryani Pointe, Pierre's Deli. Someone typing a rival's name is
+                not looking for you.</td>
+            <td><span class="pill drop">Block</span></td>
+          </tr>
+          <tr>
+            <th scope="row">"Indian store near me"</th>
+            <td class="num">1</td><td class="num">$0.03</td><td class="num">0</td>
+            <td>Grocery intent, not restaurant intent.</td>
+            <td><span class="pill drop">Block</span></td>
+          </tr>
+          <tr>
+            <th scope="row">Bangladeshi, Pakistani, Tamil restaurant</th>
+            <td class="num">4</td><td class="num">$0.04</td><td class="num">0</td>
+            <td>Different cuisines. Cheap today, but they will grow as spend grows.</td>
+            <td><span class="pill drop">Block</span></td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note stop">
+      <strong>There are currently no blocked search terms on the account at all.</strong>
+      All 126 keywords are set to broad match, which lets Google show your ad against
+      loosely related searches, and there is no exclusion list to catch the misses. That
+      is why competitors' names are appearing. Adding the roughly 20 blocks above is a
+      same-day change and needs nothing from you.
+    </div>
+
+    <div class="note">
+      <strong>Where the competitor spend is going:</strong> $23.40 of the $26.26 &mdash;
+      89% &mdash; came from the Rasoi&nbsp;3 campaign, where a single click on "khan baba
+      restaurant" cost $9.07. Pausing that campaign removes most of this problem on its own.
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">By location</p>
+      <h2>Two restaurants are carrying the account</h2>
+      <p>
+        The same budget, $5 a day, is set on all three campaigns. What comes back differs
+        enormously.
+      </p>
+    </div>
+
+    <figure>
+      <figcaption>
+        <span class="title">Spend against online-order revenue, by location</span>
+        <span class="desc">Last 30 days. Bars share one scale.</span>
+      </figcaption>
+      <div class="chart-host">
+        <svg viewBox="0 0 900 250" role="img" aria-label="Grouped bar chart comparing spend and online-order revenue by location. Rasoi 2 Oak Tree Road: $150.10 spend, $428.85 revenue. Rasoi 1 Newark Avenue: $145.59 spend, $294.65 revenue. Rasoi 3 Georges Road: $131.30 spend, no revenue.">
+          <line class="baseline" x1="210" y1="34" x2="210" y2="232"></line>
+
+          <text class="rowlab" x="202" y="52" text-anchor="end">Rasoi 2 &middot; Oak Tree Rd</text>
+          <text class="tick"   x="202" y="68" text-anchor="end">2.86&times; return</text>
+          <rect x="210" y="40" width="224" height="18" fill="var(--series-soft)"></rect>
+          <rect x="210" y="62" width="640" height="18" fill="var(--series)"></rect>
+          <text class="dlabel muted" x="442" y="54">$150.10 spent</text>
+          <text class="dlabel"       x="858" y="76">$428.85</text>
+
+          <text class="rowlab" x="202" y="114" text-anchor="end">Rasoi 1 &middot; Newark Ave</text>
+          <text class="tick"   x="202" y="130" text-anchor="end">2.02&times; return</text>
+          <rect x="210" y="102" width="217" height="18" fill="var(--series-soft)"></rect>
+          <rect x="210" y="124" width="440" height="18" fill="var(--series)"></rect>
+          <text class="dlabel muted" x="435" y="116">$145.59 spent</text>
+          <text class="dlabel"       x="658" y="138">$294.65</text>
+
+          <text class="rowlab" x="202" y="176" text-anchor="end">Rasoi 3 &middot; Georges Rd</text>
+          <text class="tick"   x="202" y="192" text-anchor="end">no return</text>
+          <rect x="210" y="164" width="196" height="18" fill="var(--series-soft)"></rect>
+          <rect x="210" y="186" width="2"   height="18" fill="var(--series)"></rect>
+          <text class="dlabel muted" x="414" y="178">$131.30 spent</text>
+          <text class="dlabel"       x="220" y="200">$0.00</text>
+
+          <text class="axis-label" x="210" y="228">Wider bar = more dollars</text>
+        </svg>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--series-soft)"></i> Ad spend</span>
+        <span><i style="background:var(--series)"></i> Online-order revenue</span>
+      </div>
+    </figure>
+
+    <div class="table-wrap" style="margin-top:18px">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Location</th>
+            <th scope="col" class="num">Impressions</th>
+            <th scope="col" class="num">Clicks</th>
+            <th scope="col" class="num">Click rate</th>
+            <th scope="col" class="num">Cost per click</th>
+            <th scope="col" class="num">Spend</th>
+            <th scope="col" class="num">Orders</th>
+            <th scope="col" class="num">Revenue</th>
+            <th scope="col" class="num">Return</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <th scope="row">Rasoi 2 &mdash; Oak Tree Rd, Iselin</th>
+            <td class="num">4,424</td><td class="num">371</td><td class="num">8.39%</td>
+            <td class="num">$0.40</td><td class="num">$150.10</td><td class="num">9</td>
+            <td class="num">$428.85</td><td class="num">2.86&times;</td>
+          </tr>
+          <tr>
+            <th scope="row">Rasoi 1 &mdash; Newark Ave, Jersey City</th>
+            <td class="num">7,305</td><td class="num">543</td><td class="num">7.43%</td>
+            <td class="num">$0.27</td><td class="num">$145.59</td><td class="num">5</td>
+            <td class="num">$294.65</td><td class="num">2.02&times;</td>
+          </tr>
+          <tr>
+            <th scope="row">Rasoi 3 &mdash; Georges Rd, South Brunswick</th>
+            <td class="num">4,750</td><td class="num">100</td><td class="num">2.11%</td>
+            <td class="num">$1.31</td><td class="num">$131.30</td><td class="num">0</td>
+            <td class="num">$0.00</td><td class="num">0.00&times;</td>
+          </tr>
+          <tr class="total">
+            <th scope="row">All locations</th>
+            <td class="num">16,479</td><td class="num">1,014</td><td class="num">6.15%</td>
+            <td class="num">$0.42</td><td class="num">$426.99</td><td class="num">14</td>
+            <td class="num">$723.50</td><td class="num">1.69&times;</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+
+    <div class="note stop">
+      <strong>Rasoi&nbsp;3 costs nearly five times as much per click as Rasoi&nbsp;1</strong>
+      &mdash; $1.31 against $0.27 &mdash; and only 2.11% of the people who see the ad click
+      it, against 7&ndash;8% at the other two. That is what a campaign looks like when it is
+      advertising a general restaurant offer for a venue that mainly runs as a banquet hall
+      and closes Monday to Thursday. Left running, it costs about $1,576 a year.
+    </div>
+
+    <div class="note">
+      <strong>There is real banquet demand, though, and it should not be thrown away.</strong>
+      Last month Rasoi&nbsp;3 picked up searches for "rasoi banquet hall," "rasoi catering"
+      and "rasoi 3 banquet hall." Meanwhile catering is the best-returning theme in your
+      whole account at 4.08&times;. The right answer is not simply to switch Rasoi&nbsp;3 off
+      and forget it &mdash; it is to pause the general restaurant campaign now as you asked,
+      and come back with a catering-and-events campaign built for how that venue actually
+      earns. We would like to bring you a proposal for that next week.
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Why the wording matters</p>
+      <h2>You are losing more reach to relevance than to budget</h2>
+      <p>
+        Google splits the searches you could have appeared for into three buckets: the
+        ones you won, the ones you lost because a more relevant advertiser outranked you,
+        and the ones you lost because your daily budget ran out. The split tells you which
+        lever to pull.
+      </p>
+    </div>
+
+    <figure>
+      <figcaption>
+        <span class="title">Share of available searches, by location</span>
+        <span class="desc">
+          Last 30 days. Each bar is 100% of the searches your ads were eligible for.
+        </span>
+      </figcaption>
+      <div class="chart-host">
+        <svg viewBox="0 0 900 226" role="img" aria-label="Stacked bar chart of impression share by location. Oak Tree Road won 28.9%, lost 52.3% to ad rank, 18.9% to budget. Newark Avenue won 23.9%, lost 60.1% to ad rank, 16.0% to budget. Georges Road won 10.0%, lost 47.4% to ad rank, 42.6% to budget.">
+          <text class="rowlab" x="202" y="54" text-anchor="end">Rasoi 2 &middot; Oak Tree Rd</text>
+          <rect x="210" y="40" width="185" height="26" fill="var(--series)"></rect>
+          <rect x="395" y="40" width="335" height="26" fill="var(--series-mid)"></rect>
+          <rect x="730" y="40" width="120" height="26" fill="var(--series-soft)"></rect>
+          <text class="dlabel" x="222" y="58" fill="#fff">28.9%</text>
+          <text class="dlabel" x="407" y="58">52.3%</text>
+          <text class="dlabel" x="742" y="58">18.9%</text>
+
+          <text class="rowlab" x="202" y="116" text-anchor="end">Rasoi 1 &middot; Newark Ave</text>
+          <rect x="210" y="102" width="153" height="26" fill="var(--series)"></rect>
+          <rect x="363" y="102" width="384" height="26" fill="var(--series-mid)"></rect>
+          <rect x="747" y="102" width="103" height="26" fill="var(--series-soft)"></rect>
+          <text class="dlabel" x="222" y="120" fill="#fff">23.9%</text>
+          <text class="dlabel" x="375" y="120">60.1%</text>
+          <text class="dlabel" x="759" y="120">16.0%</text>
+
+          <text class="rowlab" x="202" y="178" text-anchor="end">Rasoi 3 &middot; Georges Rd</text>
+          <rect x="210" y="164" width="64"  height="26" fill="var(--series)"></rect>
+          <rect x="274" y="164" width="303" height="26" fill="var(--series-mid)"></rect>
+          <rect x="577" y="164" width="273" height="26" fill="var(--series-soft)"></rect>
+          <text class="dlabel" x="286" y="182">10.0%</text>
+          <text class="dlabel" x="589" y="182">42.6%</text>
+
+          <text class="axis-label" x="210" y="212">Each bar = every search you could have shown up for</text>
+        </svg>
+      </div>
+      <div class="legend">
+        <span><i style="background:var(--series)"></i> Searches you won</span>
+        <span><i style="background:var(--series-mid)"></i> Lost to ad rank &mdash; relevance</span>
+        <span><i style="background:var(--series-soft)"></i> Lost to daily budget</span>
+      </div>
+    </figure>
+
+    <div class="note">
+      <strong>Read across the top two bars and the case for the website edits makes
+      itself.</strong> At Jersey City and Iselin, three times more reach is going to
+      competitors on relevance than is being lost to your budget. Putting the words your
+      customers actually search &mdash; butter chicken, catering, lunch buffet, Edison
+      &mdash; onto the pages your ads land on is what moves that 52&ndash;60% down. Raising
+      the daily budget without doing it just buys more expensive clicks on pages Google
+      already rates 1 out of 10.
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">Next steps</p>
+      <h2>What happens now, and who does it</h2>
+      <p>
+        The first three are ours and need no approval. The website and menu edits need
+        your green light before we open the tickets.
+      </p>
+    </div>
+
+    <div class="worklog">
+      <div class="worklog-row">
+        <div class="what">Pause the Rasoi 3 campaign</div>
+        <div class="detail">
+          As requested on July&nbsp;29 for an August&nbsp;1 effective date. Frees $131 a
+          month and removes 89% of the competitor-name spend at the same time.
+        </div>
+        <div class="who">Chowly &middot; today</div>
+      </div>
+      <div class="worklog-row">
+        <div class="what">Add ~20 blocked search terms</div>
+        <div class="detail">
+          Competitor names, grocery searches and other cuisines. The account has no
+          exclusion list at all today, which is the root cause of the wasted clicks.
+        </div>
+        <div class="who">Chowly &middot; today</div>
+      </div>
+      <div class="worklog-row">
+        <div class="what">Pause "tikka masala" and "takeout"</div>
+        <div class="detail">
+          $34 a month between them, 33 clicks, no orders in 30 days. Both are already
+          covered by better-performing keywords.
+        </div>
+        <div class="who">Chowly &middot; today</div>
+      </div>
+      <div class="worklog-row">
+        <div class="what">Rename Butter Chicken on the ordering pages</div>
+        <div class="detail">
+          "Chicken Makhani" becomes "Butter Chicken (Chicken Makhani)" on all three store
+          menus. This is the edit that directly targets the cost of your most expensive
+          keyword. We need to confirm the current item naming in the menu editor before
+          making the change.
+        </div>
+        <div class="who">Chowly &middot; this week</div>
+      </div>
+      <div class="worklog-row">
+        <div class="what">Studio ticket: marketing site edits</div>
+        <div class="detail">
+          Catering page per location; Butter Chicken featured by name; "Indian Lunch
+          Buffet &mdash; Daily 11am&ndash;3pm" heading; Edison and Iselin moved into the main
+          location line; "Indian Food Delivery in Jersey City" heading.
+        </div>
+        <div class="who">Studio &middot; on your OK</div>
+      </div>
+      <div class="worklog-row">
+        <div class="what">Move the freed budget to Iselin</div>
+        <div class="detail">
+          Oak Tree Rd returns the most per dollar at 2.86&times; and is losing 18.9% of
+          available searches to its budget cap. It is the obvious home for the $5 a day
+          coming off Rasoi&nbsp;3, once the pause has settled for a week.
+        </div>
+        <div class="who">Chowly &middot; mid-August</div>
+      </div>
+      <div class="worklog-row">
+        <div class="what">Proposal: catering &amp; events campaign for Rasoi 3</div>
+        <div class="detail">
+          Built around the banquet-hall demand already showing up in your search terms,
+          and around catering being your best-returning theme at 4.08&times;. To bring to
+          next week's call.
+        </div>
+        <div class="who">Chowly &middot; next call</div>
+      </div>
+    </div>
+  </section>
+
+  <section>
+    <div class="sec-head">
+      <p class="eyebrow">For the record</p>
+      <h2>Account setup as it stands today</h2>
+    </div>
+
+    <div class="table-wrap">
+      <table>
+        <thead>
+          <tr>
+            <th scope="col">Setting</th>
+            <th scope="col">Current value</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr><th scope="row">Campaigns</th><td>3 &middot; Chowly Website Traffic 20260211-v1, one per location &mdash; all currently active</td></tr>
+          <tr><th scope="row">Daily budget</th><td>$5.00 each, $15.00 a day in total ($426.99 spent over 30 days)</td></tr>
+          <tr><th scope="row">Bidding</th><td>Maximise conversions (all three campaigns)</td></tr>
+          <tr><th scope="row">Landing pages</th><td>rasoi123.com/store/&hellip; &mdash; straight to online ordering, one page per location</td></tr>
+          <tr><th scope="row">Ads</th><td>One responsive search ad per campaign</td></tr>
+          <tr><th scope="row">Active keywords</th><td>126 &mdash; all broad match (43 Jersey City, 41 Iselin, 42 South Brunswick)</td></tr>
+          <tr><th scope="row">Blocked search terms</th><td>None &mdash; no exclusion list exists on the account</td></tr>
+          <tr><th scope="row">Order tracking</th><td>Live &mdash; online orders reported through "Rasoi Restaurant COO Orders"</td></tr>
+          <tr><th scope="row">Share of available searches won</th><td>23.9% Jersey City &middot; 28.9% Iselin &middot; 10.0% South Brunswick</td></tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <footer>
+    <p>
+      Prepared by Chowly for Rasoi Restaurant &middot; August 7, 2026. All figures are
+      pulled directly from the restaurant's Google Ads account and cover
+      <b>July 8 to August 6, 2026</b> unless stated otherwise. Campaigns have been live
+      since February 11, 2026, so the 30-day window reflects a settled account rather than
+      a launch period.
+    </p>
+    <p>
+      <b>How return on ad spend is calculated.</b> Revenue counts completed online orders
+      attributed to the ads through Chowly online ordering only. Google also records
+      engagement actions on this account &mdash; directions requests, menu views, website
+      visits, clicks to call and store visits &mdash; and each of those is counted by Google
+      as a conversion worth $1. Including them would inflate the return several times over,
+      so they are excluded from every return figure in this report. Phone calls are reported
+      separately as a count, not as revenue.
+    </p>
+    <p>
+      Search-term and keyword figures are the last 30 days. "Clicks" counts visits to your
+      online ordering pages. Quality ratings are Google's own 1&ndash;10 keyword quality
+      scores. Location names have been used in place of full street addresses.
+    </p>
+  </footer>
+</main>
+</body>
+</html>
